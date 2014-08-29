@@ -12,7 +12,7 @@ function init () {
 	
 	ctx.font = "30px Iceland";
 	ctx.fillStyle = "rgba(255, 0, 0, 1)";
-	ctx.fillText("CLICK TO START", 10, 30);
+	ctx.fillText("CLICK TO PLAY", 10, 30);
 	
 }
 
