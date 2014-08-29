@@ -43,7 +43,7 @@ function flashCircle () {
 	ctx.fillStyle = "rgba(255, 255, 0, 1)";
 	ctx.fill();
 	
-	msec = setInterval('countup()', 1);
+	msec = setInterval('countup()', 50);
 	
 	getCurrentTime();
 	lock = false;
