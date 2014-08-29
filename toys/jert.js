@@ -1,103 +1,114 @@
 var canvas = document.getElementById("c1");
 var time   = document.getElementById("time");
 var rtat   = document.getElementById("rta");
-var msec;
 var ctx  = canvas.getContext("2d");
 var cur  = new Array(2);
-var rta  = 0;
-var lock = false;
 var mode = 1;
+var clickBlock = false;
+var msecSwitch;
 
 function init () {
 	
+	// webfontから使ってます
 	ctx.font = "30px Iceland";
-	ctx.fillStyle = "rgba(255, 0, 0, 1)";
-	ctx.fillText("CLICK TO PLAY", 10, 30);
+	ctx.fillStyle = "red";
+	ctx.fillText("CLICK TO PLAY", 10, 380);
 	
 }
 
 function startTest () {
 	
-	ctx.lineWidth = 5;
-	ctx.strokeStyle = "#FF0000";
-	ctx.beginPath();
-	
+	// (1=Standard Mode)
+	// (2=BlackEdition Mode)
 	if (mode == 1) {
 		ctx.arc(200, 200, 20, 0, Math.PI * 2, false);
 	} else {
+		// BlackEditionはStandardより丸が小さいでしゅ
 		ctx.arc(200, 200, 3, 0, Math.PI * 2, false);
 	}
-	ctx.fillStyle = "rgba(255, 0, 0, 1)";
+	
+	// ここまで赤丸描画でしゅ
+	ctx.fillStyle = "red";
 	ctx.fill();
 	
-	ctx.fillStyle = "rgba(0, 0, 0, 1)";
-	ctx.fillRect(0, 0, 400, 40);
+	// ステータスバーでしゅ
+	ctx.fillStyle = "black";
+	ctx.fillRect(0, 350, 400, 50);
 	
-	ctx.fillStyle = "rgba(0, 255, 0, 1)";
-	ctx.fillText("Playing", 10, 30);
+	ctx.fillStyle = "limegreen";
+	ctx.fillText("Playing", 10, 380);
 	
 }
 
 function flashCircle () {
 	
-	ctx.fillStyle = "rgba(255, 255, 0, 1)";
+	// 光る寸前にリセットかけましゅ
+	rtat.innerText = 0;
+	
+	// 光らせましゅ
+	ctx.fillStyle = "yellow";
 	ctx.fill();
 	
-	msec = setInterval('countup()', 50);
-	
+	// ここからカウント開始してましゅ
+	msecSwitch = setInterval('countup()', 50);
 	getCurrentTime();
-	lock = false;
+	
+	clickBlock = false;
 	
 }
 
 function restoreCircle () {
 	
+	// 計測優先で押下時間を真っ先に処理させましゅ
 	getCurrentTime();
+	clearInterval(msecSwitch);
 	
-	clearInterval(msec);
-	rta = 0;
-	rtat.innerText = 0;
+	if (cur[1]) {
+		time.innerHTML = cur[0] - cur[1] + "<br>" + time.innerHTML;
+		rtat.innerText = (cur[0] - cur[1]);
+	}
 	
-	if (cur[1])
-		time.innerHTML = cur[0] - cur[1] + "<br>"+time.innerHTML;
+	ctx.fillStyle = "red";
 	
-	ctx.fillStyle = "rgba(255, 0, 0, 1)";
-	ctx.fill();
 }
 
 function countup () {
 	rtat.innerText = (parseInt(+new Date()) - cur[0]);
 }
 
+// これでミリ秒単位の時間ゲットできまーしゅｗ
 function getCurrentTime () {
 	cur.unshift(parseInt(+new Date()));
 }
 
+// クリックしたら最初にこれが発動しましゅ
 function getNextWaitTime () {
 	
 	startTest();
 	
-	if (lock)
+	// 誤クリックあっても何もしましぇん
+	// ペナルティ加算もしましぇん
+	if (clickBlock)
 		return;
 	
 	restoreCircle();
-	lock = true;
+	clickBlock = true;
 	
+	// 3000ミリ秒+0～3000ミリ秒で光らせましゅ
 	msecs = 3000 + Math.floor( Math.random() * 3000 );
 	setTimeout('flashCircle()', msecs);
+	
 }
 
+// BlackEditionだドン！
 function blackedition () {
 	
 	mode = 2;
-	
 	canvas.style.background = "url(./bf4.png)";
 	
-	ctx.lineWidth = 5;
-	ctx.strokeStyle = "#FF0000";
-	ctx.beginPath();
+	// BlackEditionはStandardより丸が小さいでしゅ
 	ctx.arc(200, 200, 3, 0, Math.PI * 2, false);
-	ctx.fillStyle = "rgba(255, 0, 0, 1)";
+	ctx.fillStyle = "red";
 	ctx.fill();
 	
 }
