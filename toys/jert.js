@@ -70,7 +70,9 @@ function restoreCircle () {
 	if (cur[1]) {
 		time.innerHTML = cur[0] - cur[1] + "<br>" + time.innerHTML;
 		rtat.innerText = (cur[0] - cur[1]);
-		score.unshift(parseInt(cur[0] - cur[1]));
+		
+		score.unshift(cur[0] - cur[1]);
+		
 	}
 	
 	avg.innerText = stavg(score);
@@ -130,8 +132,9 @@ function stavg (st) {
 			break;
 		
 		sum = sum + Number(st[i]);
+		
 	}
 	
-	return Math.round((sum/len)*100)/100;
+	return Math.round((sum/i)*100)/100;
 	
 }
