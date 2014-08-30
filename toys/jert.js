@@ -135,6 +135,9 @@ function stavg (st) {
 		
 	}
 	
-	return Math.round((sum/(i+1))*100)/100;
+	if (i == 0)
+		i = 1;
+	
+	return Math.round((sum/i)*100)/100;
 	
 }
