@@ -135,9 +135,11 @@ function stavg (st) {
 		
 	}
 	
+	// このあと要素数で割るから0の時は1足しますしゅ
 	if (i == 0)
 		i = 1;
 	
 	return Math.round((sum/i)*100)/100;
 	
 }
+
