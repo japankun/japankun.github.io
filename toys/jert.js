@@ -1,8 +1,10 @@
 var canvas = document.getElementById("c1");
 var time   = document.getElementById("time");
 var rtat   = document.getElementById("rta");
+var avg    = document.getElementById("avg");
+
 var ctx  = canvas.getContext("2d");
-var cur  = new Array(2);
+var cur  = new Array(5);
 var mode = 1;
 var clickBlock = false;
 var msecSwitch;
@@ -68,6 +70,7 @@ function restoreCircle () {
 		rtat.innerText = (cur[0] - cur[1]);
 	}
 	
+	avg.innerText = stavg(cur);
 	ctx.fillStyle = "red";
 	
 }
@@ -110,5 +113,22 @@ function blackedition () {
 	ctx.arc(200, 200, 3, 0, Math.PI * 2, false);
 	ctx.fillStyle = "red";
 	ctx.fill();
+	
+}
+
+function stavg (st) {
+	
+	var sum = 0;
+	
+	for (var i = 0, len = st.length; i < len; i++) {
+		
+		// 要素が未定義だったら抜けましゅ
+		if (!st[i])
+			break;
+		
+		sum = sum + Number(st[i]);
+	}
+	
+	return Math.round((sum/len)*100)/100;
 	
 }
