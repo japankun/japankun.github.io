@@ -3,9 +3,11 @@ var time   = document.getElementById("time");
 var rtat   = document.getElementById("rta");
 var avg    = document.getElementById("avg");
 
-var ctx  = canvas.getContext("2d");
-var cur  = new Array(5);
-var mode = 1;
+var ctx    = canvas.getContext("2d");
+var cur    = new Array(2);
+var score  = new Array(5);
+var mode   = 1;
+
 var clickBlock = false;
 var msecSwitch;
 
@@ -68,9 +70,10 @@ function restoreCircle () {
 	if (cur[1]) {
 		time.innerHTML = cur[0] - cur[1] + "<br>" + time.innerHTML;
 		rtat.innerText = (cur[0] - cur[1]);
+		score.unshift = parseInt(cur[0] - cur[1]);
 	}
 	
-	avg.innerText = stavg(cur);
+	avg.innerText = stavg(score);
 	ctx.fillStyle = "red";
 	
 }
