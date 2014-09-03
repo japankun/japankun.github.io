@@ -6,7 +6,7 @@ var avg    = document.getElementById("avg");
 var ctx    = canvas.getContext("2d");
 var cur    = new Array(2);
 var score  = new Array(5);
-var mode   = 1;
+var mode_  = 1;
 
 var clickBlock = false;
 var msecSwitch;
@@ -24,7 +24,7 @@ function startTest () {
 	
 	// (1=Standard Mode)
 	// (2=BlackEdition Mode)
-	if (mode == 1) {
+	if (mode_ == 1) {
 		ctx.arc(200, 200, 20, 0, Math.PI * 2, false);
 	} else {
 		// BlackEditionはStandardより丸が小さいでしゅ
@@ -103,7 +103,7 @@ function getNextWaitTime () {
 	clickBlock = true;
 	
 	// 3000ミリ秒+0～3000ミリ秒で光らせましゅ
-	msecs = 3000 + Math.floor( Math.random() * 3000 );
+	var msecs = 3000 + Math.floor( Math.random() * 3000 );
 	setTimeout('flashCircle()', msecs);
 	
 }
@@ -111,7 +111,7 @@ function getNextWaitTime () {
 // BlackEditionだドン！
 function blackedition () {
 	
-	mode = 2;
+	mode_ = 2;
 	canvas.style.background = "url(./bf4.png)";
 	
 	// BlackEditionはStandardより丸が小さいでしゅ
