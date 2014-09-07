@@ -3,7 +3,7 @@ japankun.github.io
 
 Japankun dayo!
 
-###GitHub Page
+###GitHub Pages
 - [Japankun.github.io](http://japankun.github.io/)
 
 ###for HardCore Gamer
