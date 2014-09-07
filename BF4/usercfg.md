@@ -13,7 +13,7 @@ user.cfg Tips
  - 記述するとカクツキが出る場合有り
 
 ### PerfOverlay.Enable (Boolean)[InGame]
-(true) *PerfOverlay.*～で表示可能な全ての項目を表示する
+(true) *PerfOverlay.*～で有効にした項目を表示する
 
 ### PerfOverlay.DrawGraph (Boolean)[InGame]
 (false) 画面左下にフレームグラフを表示する
