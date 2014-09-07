@@ -144,7 +144,7 @@ user.cfg Tips
 (1024) シャドウマップに関する設定
 
 ### WorldRender.LightTileCsPathEnable (Boolean)
-(true) シャドウマップに関する設定
+(true) 情報ください
 
 ### WorldRender.PlanarReflectionEnable (Boolean)[InGame]
 (true) 面に対する反射の設定
