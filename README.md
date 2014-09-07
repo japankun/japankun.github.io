@@ -9,3 +9,6 @@ Japankun dayo!
 
 ###for Pro Gamer
 - [Nyorittu Now!](http://nyorittunow-japankun.rhcloud.com/)
+
+###about.me
+- [Japan kun](http://about.me/SCEJapan/)

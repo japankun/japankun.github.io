@@ -18,7 +18,7 @@
 <body onload="init()">
 <div class="main">
 	<div id="jpns">
-		<a href="https://github.com/japankun/japankun.github.io">Japan Studio.</a><br>
+		<a href="http://about.me/SCEJapan">Japan Studio.</a><br>
 		<a href="javascript:location.reload()">Standard</a> / <a href="#" onclick="blackedition()">B Edition</a>
 	</div>
 	<h1>Japan-kun Endless Reaction Test</h1>
