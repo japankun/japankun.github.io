@@ -1,7 +1,7 @@
 user.cfg Tips
 ==================
 
- - (Booelan) (true/false)のいずれかを設定(0/1)で代用可能 
+ - (Booelan) (true/false)のいずれかを設定(1/0)で代用可能 
  - (Int32/Uint32) 整数
  - (Float32) 整数もしくは小数
  - [InGame] ゲーム内コンソールからの設定が即時に反映される項目
