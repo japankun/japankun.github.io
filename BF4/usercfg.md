@@ -1,6 +1,12 @@
 user.cfg Tips
 ==================
 
+ - (Booelan) (true/false)のいずれかを設定(0/1)で代用可能 
+ - (Int32/Uint32) 整数
+ - (Float32) 整数もしくは小数
+ - [InGame] ゲーム内コンソールからの設定が即時に反映される項目
+ - (その他) その他の設定値は項目ごとに書いてあります
+
 ### GameTime.MaxVariableFps (Float32)[InGame]
 (200) ゲーム内の最大FPSを変更する
 
