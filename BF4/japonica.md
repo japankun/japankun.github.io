@@ -20,3 +20,6 @@
 ####PC設定
  - [ゲームのラグ対策　～回線は速度より安定度(ping)を重視～ - ラテ散漫](http://latesanman.blog.fc2.com/blog-entry-45.html)
  - [Windows 7 の初期設定 - ぐりねこ](http://blog.gurineko.com/200912/se/windows-7-%E3%81%AE%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A)
+
+####書き換えるとき使う
+ - [Markdown Live Editor](http://jrmoran.com/playground/markdown-live-editor/)
