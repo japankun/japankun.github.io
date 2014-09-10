@@ -2,9 +2,9 @@
 
  - 「TYPE」によってリレーするPeerCastを替えたいときに使う
  - ただのバッチファイル
- - 
  
 ###ダウンロード
+
 [PeerCastSelector.bat](https://raw.githubusercontent.com/japankun/japankun.github.io/master/note/peercast/PeerCastSelector.bat)
 
 ###使い方
