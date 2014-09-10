@@ -15,5 +15,6 @@
  4. ファイル名にPeerCastSelector.batのパス(例：D:\PeerCast\PeerCastSelector.bat)を設定する
  5. 引数に「"&lt;stream/>" "&lt;channelname/>" "&lt;direct/>" "&lt;type/>" "再生したいプレイヤー"」を設定する
  6. PeerCastSelector.batをメモ帳などで開く
- 7. PeerCastStationのポートとPeerCastのポートを必要があれば書き換える(初期値PC:7144、PCS:7146)
- 8. いつものようにpcypLiteから再生するとTYPEによって接続先が変わる
+ 7. PeerCastIPをPeerCastが動いているローカルIPに書き換える
+ 8. PeerCastStationのポートとPeerCastのポートを必要があれば書き換える(初期値PC:7144、PCS:7146)
+ 9. いつものようにpcypLiteから再生するとTYPEによって接続先が変わる
