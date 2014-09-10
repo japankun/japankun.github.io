@@ -1,12 +1,15 @@
 @echo off
 
-set PeerCastStationPort=7146
-set PeerCastPort=7144
+setlocal ENABLEDELAYEDEXPANSION
 
-echo %1 %2 %3 %4 %5
+set PeerCastIP=192.168.11.1
+set PeerCastStation=%PeerCastIP%:7146
+set PeerCast=%PeerCastIP%:7144
+set ArgvUrl=%1
+set StreamUrl=!ArgvUrl:%PeerCast%=%PeerCastStation%!
 
 if {%4} == {"FLV"} (
-	call %5 %1:%PeerCastPort%=%PeerCastStationPort% "%2" "%3"
+	start "" %5 "%StreamUrl%" "%2" "%3"
 ) else (
-	call %5 "%1" "%2" "%3"
+	start "" %5 "%1" "%2" "%3"
 )
