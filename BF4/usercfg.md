@@ -75,6 +75,10 @@ user.cfg Tips
  - (SSAO) 簡易的な陰影付ける
  - (HBAO) SSAOよりリアルな陰影を付ける
 
+|HBAO|SSAO|なしお|
+|---|---|---|
+|![HBAO](https://scejapankun.files.wordpress.com/2014/09/hbao.png)|![SSAO](https://scejapankun.files.wordpress.com/2014/09/ssao.png)|![NASIO](https://scejapankun.files.wordpress.com/2014/09/none.png)|
+
 ### Render.DrawScreenInfo (Boolean)
 (false) 画面上部に使用API、画面解像度、周波数、使用GPU等を表示する
 
