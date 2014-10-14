@@ -41,7 +41,7 @@ BBLog.handle("add.plugin", {
 			
 			if (!$('#japankun-rspm').length) {
 				
-				var soldierInfoName = $(".soldier-info-name").text().replace(/\s+/g, "");
+				var soldierInfoName = $(".soldier-info-name span:last").text().replace(/\s+/g, "");
 				
 				$(".overview-skill-bar").after('<p id="japankun-rspm" style="margin:-.1em 0 1.3em 0;font-size:medium;">loading...</p>');
 				$(".overview-skill-bar").css("margin", "-.6em auto 0.4em auto");
