@@ -57,7 +57,8 @@ BBLog.handle("add.plugin", {
 				
 				function(data) {
 					$("#japankun-rspm-value").text(Math.round(data.query.results.json.rspm));
-				}
+			}).fail(function() {
+    					$("#japankun-rspm-value").text("Error!");
 			);
 			
 		},
