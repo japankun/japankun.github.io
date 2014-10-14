@@ -43,8 +43,10 @@ BBLog.handle("add.plugin", {
 				
 				var soldierInfoName = $(".soldier-info-name").text().replace(/\s+/g, "");
 				
-				$("#overview-skill-value").append('<p id="japankun-rspm" style="margin:-.1em 0 -.4em 0;font-size:medium;">RSPM:<span id="japankun-rspm-value">loading...</span></p>');
-				$("#japankun-rspm-value").text(instance.japankunRSPM.requestRSPM(instance, soldierInfoName));
+				$(".overview-skill-bar").after('<p id="japankun-rspm" style="margin:-.1em 0 1.3em 0;font-size:medium;">loading...</p>');
+				$(".overview-skill-bar").css("margin", "-.6em auto 0.4em auto");
+				instance.japankunRSPM.requestRSPM(instance, soldierInfoName);
+				
 			}
 			
 		},
@@ -56,10 +58,22 @@ BBLog.handle("add.plugin", {
 			$.getJSON(queryUrl,
 				
 				function(data) {
-					$("#japankun-rspm-value").text(Math.round(data.query.results.json.rspm));
+					$("#japankun-rspm").text("");
+					
+					// KDR
+					$("#japankun-rspm").append('<span style="display:block;width:111px;float:left;">K/D:<span id="japankun-rspm-value">' +
+						parseFloat(data.query.results.json.kdr).toFixed(3) + '</span></span>');
+					//RSPM
+					$("#japankun-rspm").append('<span style="display:block;width:111px;float:left;">RSPM:<span id="japankun-kdr-value">' +
+						Math.round(data.query.results.json.rspm) + '</span></span>');
+					//KPM
+					$("#japankun-rspm").append('<span style="display:block;width:111px;float:left;">KPM:<span id="japankun-kpm-value">' +
+						parseFloat(data.query.results.json.kpm).toFixed(3) + '</span></span>');
+					
 			}).fail(function() {
-    					$("#japankun-rspm-value").text("Error!");
+    				$("#japankun-rspm-value").text("Error!");
 			});
+			
 			
 		},
 		
