@@ -1,7 +1,7 @@
 /**
 * @name RSPM BBLog Plugin
 * @author japankun
-* @version 0.1 2014/10/14
+* @version 0.1 2014/10/15
 * @url https://github.com/japankun/japankun.github.io
 */
 
