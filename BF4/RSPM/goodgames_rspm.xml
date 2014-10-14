@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
+	<meta>
+		<author>japankun</author>
+	</meta>
+
+	<bindings>
+		<select itemPath="" produces="JSON">
+			<inputs>
+				<key id='url' type='xs:string' paramType='variable' required='true' />
+			</inputs>
+			<execute><![CDATA[
+				response.object = y.xmlToJson(y.rest(url).accept('application/json').header("Content-type","application/json").get().response);
+				y.sync();
+			]]></execute>
+		</select>
+	</bindings>
+</table>
