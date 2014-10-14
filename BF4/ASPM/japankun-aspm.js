@@ -1,5 +1,5 @@
 /**
-* @name ASPM BBLog Plugin
+* @name RSPM BBLog Plugin
 * @author japankun
 * @version 0.1 2014/10/14
 * @url https://github.com/japankun/japankun.github.io
@@ -9,12 +9,12 @@
 BBLog.handle("add.plugin", {
 	/* Info */
 	id : "jpnkun-aspm",
-	name : "ASPM BBLog Plugin",
+	name : "RSPM BBLog Plugin",
 	build : '20141014',
 	
 	translations : {
 		"en" : {
-			"jpnkunaspm.enable" : "Enable ASPM at Soldier Page"
+			"jpnkunaspm.enable" : "Enable RSPM Plugin"
 		}
 	},
 	
@@ -43,7 +43,7 @@ BBLog.handle("add.plugin", {
 				
 				var soldierInfoName = $(".soldier-info-name").text().replace(/\s+/g, "");
 				
-				$("#overview-skill-value").append('<p id="japankun-aspm" style="margin:-.1em 0 -.4em 0;font-size:medium;">ASPM:<span id="japankun-aspm-value">loading...</span></p>');
+				$("#overview-skill-value").append('<p id="japankun-aspm" style="margin:-.1em 0 -.4em 0;font-size:medium;">RSPM:<span id="japankun-aspm-value">loading...</span></p>');
 				$("#japankun-aspm-value").text(instance.japankunASPM.requestASPM(instance, soldierInfoName));
 			}
 			
