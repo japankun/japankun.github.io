@@ -11,4 +11,4 @@ BF4バトルログ(兵士ページ)にRSPMを表示させるBetter Battlelogプ�
 http://japankun.github.io/BF4/ASPM/japankun-aspm.js
 
 - Q.ASPMという表記がいっぱいあるんだが？
-- A.書き終わってからRだった事に気づきました(´,,･ω･,,`)
+- A.書き終わってからRだった事を思い出しました(´,,･ω･,,`)
