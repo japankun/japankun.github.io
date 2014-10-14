@@ -59,7 +59,7 @@ BBLog.handle("add.plugin", {
 					$("#japankun-rspm-value").text(Math.round(data.query.results.json.rspm));
 			}).fail(function() {
     					$("#japankun-rspm-value").text("Error!");
-			);
+			});
 			
 		},
 		
