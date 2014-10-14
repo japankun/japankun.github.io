@@ -5,6 +5,8 @@
 * @url https://github.com/japankun/japankun.github.io
 */
 
+// My Code Works I Don't Know Why
+
 // initialize plugin
 BBLog.handle("add.plugin", {
 	/* Info */
