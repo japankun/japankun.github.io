@@ -43,7 +43,13 @@ BBLog.handle("add.plugin", {
 				
 				var soldierInfoName = $(".soldier-info-name").text().replace(/\s+/g, "");
 				
-				$("#overview-skill-value").append('<p id="japankun-rspm" style="margin:-.1em 0 -.4em 0;font-size:medium;">RSPM:<span id="japankun-rspm-value">loading...</span></p>');
+				//$("#overview-skill-value").append('<p id="japankun-rspm" style="margin:-.1em 0 -.4em 0;font-size:medium;">RSPM:<span id="japankun-rspm-value">loading...</span></p>');
+				$("#overview-skill-bar").css("margin":"-.6em auto 0.4em auto");
+				$("#overview-skill-bar").append('<p id="japankun-rspm" style="margin:-.1em 0 1.3em 0;font-size:medium;">');
+				$("#japankun-rspm").append('<span style="display:block;width:111px;float:left;">K/D:<span id="japankun-rspm-value">4.000</span></span>');
+				$("#japankun-rspm").append('<span style="display:block;width:111px;float:left;">RSPM:<span id="japankun-kdr-value">568</span></span>');
+				$("#japankun-rspm").append('<span style="display:block;width:111px;float:left;">KPM:<span id="japankun-kpm-value">1.000</span></span>');
+
 				$("#japankun-rspm-value").text(instance.japankunRSPM.requestRSPM(instance, soldierInfoName));
 			}
 			
