@@ -9,10 +9,11 @@
 
 // initialize plugin
 BBLog.handle("add.plugin", {
+	
 	/* Info */
 	id : "jpnkun-rspm",
 	name : "RSPM BBLog Plugin",
-	build : '20141014',
+	build : '20141015',
 	
 	translations : {
 		"en" : {
@@ -38,15 +39,15 @@ BBLog.handle("add.plugin", {
 	*/
 	japankunRSPM : {
 		
-		//
 		init : function(instance){
 			
 			if (!$('#japankun-rspm').length) {
 				
-				var soldierInfoName = $(".soldier-info-name span:last").text().replace(/\s+/g, "");
+				var soldierInfoName = $(".soldier-info-name span:last").text();
 				
 				$(".overview-skill-bar").after('<p id="japankun-rspm" style="margin:-.1em 0 1.3em 0;font-size:medium;">loading...</p>');
 				$(".overview-skill-bar").css("margin", "-.6em auto 0.4em auto");
+				
 				instance.japankunRSPM.requestRSPM(instance, soldierInfoName);
 				
 			}
@@ -55,27 +56,44 @@ BBLog.handle("add.plugin", {
 		
 		requestRSPM : function (instance, soldierInfoName) {
 			
-			var queryUrl = ("https://query.yahooapis.com/v1/public/yql?q=USE%20\'https%3A%2F%2Fraw.githubusercontent.com%2Fjapankun%2Fjapankun.github.io%2Fmaster%2FBF4%2FRSPM%2Fgoodgames_rspm.xml\'%20AS%20remote%3BSELECT%20*%20FROM%20remote%20WHERE%20url%3D\'http%3A%2F%2Fwww.goodgames.jp%2Fstatsnow%2Fbf4%2Fapi%2Frspm%3FsoldierName%3D"+soldierInfoName+"%26gameMode%3DConquestLarge0%26numRounds%3D25\'&format=json&callback=?");
-
+			var openDataTableXML = "https://raw.githubusercontent.com/japankun/japankun.github.io/master/BF4/RSPM/goodgames_rspm.xml";
+			var statsNowAPI      = "http://www.goodgames.jp/statsnow/bf4/api/rspm";
+			var statsNowQuery    = "?soldierName=" + soldierInfoName + "&gameMode=ConquestLarge0&numRounds=25";
+			var yahooPipesAPI    = "https://query.yahooapis.com/v1/public/yql?q=";
+			var yahooPipesQuery  = encodeURIComponent("USE '")
+				+ encodeURIComponent(openDataTableXML)
+				+ encodeURIComponent("' AS remote;SELECT * FROM remote WHERE url='")
+				+ encodeURIComponent(statsNowAPI)
+				+ encodeURIComponent(statsNowQuery)
+				+ "'&format=json&callback=?";
+			
+			var queryUrl = yahooPipesAPI+yahooPipesQuery;
+			
 			$.getJSON(queryUrl,
 				
 				function(data) {
+					
 					$("#japankun-rspm").text("");
 					
-					// KDR
-					$("#japankun-rspm").append('<span style="display:block;width:111px;float:left;">K/D:<span id="japankun-rspm-value">' +
-						parseFloat(data.query.results.json.kdr).toFixed(3) + '</span></span>');
+					//KDR
+					$("#japankun-rspm").append(
+						'<span style="display:block;width:111px;float:left;">K/D:<span id="japankun-rspm-value">'
+						+ parseFloat(data.query.results.json.kdr).toFixed(3) + '</span></span>');
+						
 					//RSPM
-					$("#japankun-rspm").append('<span style="display:block;width:111px;float:left;">RSPM:<span id="japankun-kdr-value">' +
-						Math.round(data.query.results.json.rspm) + '</span></span>');
+					$("#japankun-rspm").append(
+						'<span style="display:block;width:111px;float:left;">RSPM:<span id="japankun-kdr-value">'
+						+ Math.round(data.query.results.json.rspm) + '</span></span>');
+						
 					//KPM
-					$("#japankun-rspm").append('<span style="display:block;width:111px;float:left;">KPM:<span id="japankun-kpm-value">' +
-						parseFloat(data.query.results.json.kpm).toFixed(3) + '</span></span>');
+					$("#japankun-rspm").append(
+						'<span style="display:block;width:111px;float:left;">KPM:<span id="japankun-kpm-value">'
+						+ parseFloat(data.query.results.json.kpm).toFixed(3) + '</span></span>');
+						
 					
 			}).fail(function() {
-    				$("#japankun-rspm-value").text("Error!");
+    				$("#japankun-rspm").text("Error!");
 			});
-			
 			
 		},
 		
