@@ -13,8 +13,8 @@ http://japankun.github.io/BF4/RSPM/japankun-rspm.js
 
 ####動作確認
 - Better Battlelog 4.5.0
-- Chrome38.0.2125.104
-- Firefox33.0
+- Chrome 38.0.2125.104
+- Firefox 33.0
 
 ####利用サービスなど
 - [Real SPM calculator "StatsNow!!"](http://www.goodgames.jp/statsnow/bf4/)
