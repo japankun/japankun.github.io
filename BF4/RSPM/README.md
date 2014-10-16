@@ -11,6 +11,11 @@ BF4バトルログ(進行過程ページ)にgoodgamesさんのRSPMを表示さ�
 使用するにはBetter BattlelogメニューのPluginsから下のURLを追加してやってください。
 http://japankun.github.io/BF4/RSPM/japankun-rspm.js
 
+####動作確認
+- Better Battlelog 4.5.0
+- Chrome38.0.2125.104
+- Firefox33.0
+
 ####利用サービスなど
 - [Real SPM calculator "StatsNow!!"](http://www.goodgames.jp/statsnow/bf4/)
 - [Yahoo Query Language](https://developer.yahoo.com/yql/)
