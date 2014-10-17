@@ -13,7 +13,7 @@ BBLog.handle("add.plugin", {
 	/* Info */
 	id : "jpnkun-rspm",
 	name : "RSPM BBLog Plugin",
-	build : '20141015',
+	build : '20141017',
 	
 	translations : {
 		"en" : {
