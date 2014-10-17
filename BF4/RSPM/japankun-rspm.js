@@ -1,7 +1,7 @@
 /**
 * @name RSPM BBLog Plugin
 * @author japankun
-* @version 0.1 2014/10/15
+* @version 0.1 2014/10/17
 * @url https://github.com/japankun/japankun.github.io
 */
 
@@ -56,10 +56,10 @@ BBLog.handle("add.plugin", {
 		
 		requestRSPM : function (instance, soldierInfoName) {
 			
-			var openDataTableXML = "https://raw.githubusercontent.com/japankun/japankun.github.io/master/BF4/RSPM/goodgames_rspm.xml";
+			var openDataTableXML = "http://japankun.github.io/BF4/RSPM/goodgames_rspm.xml";
 			var statsNowAPI      = "http://www.goodgames.jp/statsnow/bf4/api/rspm";
 			var statsNowQuery    = "?soldierName=" + soldierInfoName + "&gameMode=ConquestLarge0&numRounds=25";
-			var yahooPipesAPI    = "https://query.yahooapis.com/v1/public/yql?q=";
+			var yahooPipesAPI    = "http://query.yahooapis.com/v1/public/yql?q=";
 			var yahooPipesQuery  = encodeURIComponent("USE '")
 				+ encodeURIComponent(openDataTableXML)
 				+ encodeURIComponent("' AS remote;SELECT * FROM remote WHERE url='")
@@ -75,14 +75,20 @@ BBLog.handle("add.plugin", {
 					
 					$("#japankun-rspm").text("");
 					
+					if (data.error) {
+						$("#japankun-rspm").text("Connection Error!");
+						return;
+						
+					}
+					
 					//KDR
 					$("#japankun-rspm").append(
-						'<span style="display:block;width:111px;float:left;">K/D:<span id="japankun-rspm-value">'
+						'<span style="display:block;width:111px;float:left;">K/D:<span id="japankun-kdr-value">'
 						+ parseFloat(data.query.results.json.kdr).toFixed(3) + '</span></span>');
 						
 					//RSPM
 					$("#japankun-rspm").append(
-						'<span style="display:block;width:111px;float:left;">RSPM:<span id="japankun-kdr-value">'
+						'<span style="display:block;width:111px;float:left;">RSPM:<span id="japankun-rspm-value">'
 						+ Math.round(data.query.results.json.rspm) + '</span></span>');
 						
 					//KPM
