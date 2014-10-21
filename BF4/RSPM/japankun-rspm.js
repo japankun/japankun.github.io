@@ -1,7 +1,7 @@
 /**
 * @name RSPM BBLog Plugin
 * @author japankun
-* @version 0.1 2014/10/17
+* @version 0.2 2014/10/21
 * @url https://github.com/japankun/japankun.github.io
 */
 
@@ -13,7 +13,7 @@ BBLog.handle("add.plugin", {
 	/* Info */
 	id : "jpnkun-rspm",
 	name : "RSPM BBLog Plugin",
-	build : '20141017',
+	build : '20141021',
 	
 	translations : {
 		"en" : {
@@ -26,7 +26,7 @@ BBLog.handle("add.plugin", {
 	
 	domchange : function(instance){
 		
-		if (BBLog.cache("mode") == "bf4" && instance.japankunRSPM.checkPageUrl("^/bf4/.+?/soldier/.+?/stats/.+?/pc/$")) {
+		if (BBLog.cache("mode") == "bf4" && instance.japankunRSPM.checkPageUrl("^/bf4/(.+?/)?soldier/.+?/stats/.+?/pc/$")) {
 			if ($("#overview-skill-value").length && !$('#japankun-rspm').length) {
 				instance.japankunRSPM.init(instance);
 			}
