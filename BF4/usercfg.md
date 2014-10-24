@@ -14,10 +14,11 @@ user.cfg Tips
 
 ### NetworkPerfOverlay.Enable (Boolean)[InGame]
 (true) *NetworkPerfOverlay.*～で有効にした項目を表示する
-![NetworkGraph Sample](https://scejapankun.files.wordpress.com/2014/10/networkgraph.png)
 
 ### NetworkPerfOverlay.DrawGraph (Boolean)[InGame]
 (false) 画面右下にネットワークグラフを表示する
+
+![NetworkGraph Sample](https://scejapankun.files.wordpress.com/2014/10/networkgraph.png)
 
 ### NetworkPerfOverlay.DrawLatencyGraph (Boolean)[InGame]
 (true) *NetworkPerfOverlay.DrawGraph*にLatencyグラフを追加する
