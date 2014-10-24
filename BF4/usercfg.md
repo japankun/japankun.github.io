@@ -13,6 +13,7 @@ user.cfg Tips
  - 記述するとカクツキが出る場合有り
 
 ### NetworkPerfOverlay.Enable (Boolean)[InGame]
+(true) *NetworkPerfOverlay.*～で有効にした項目を表示する
 ![NetworkGraph Sample](https://scejapankun.files.wordpress.com/2014/10/networkgraph.png)
 
 ### NetworkPerfOverlay.DrawGraph (Boolean)[InGame]
