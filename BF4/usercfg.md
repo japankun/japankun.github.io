@@ -12,6 +12,36 @@ user.cfg Tips
 
  - 記述するとカクツキが出る場合有り
 
+### NetworkPerfOverlay.Enable (Boolean)[InGame]
+![NetworkGraph Sample](https://scejapankun.files.wordpress.com/2014/10/networkgraph.png)
+
+### NetworkPerfOverlay.DrawGraph (Boolean)[InGame]
+(false) 画面右下にネットワークグラフを表示する
+
+### NetworkPerfOverlay.DrawLatencyGraph (Boolean)[InGame]
+(true) *NetworkPerfOverlay.DrawGraph*にLatencyグラフを追加する
+
+### NetworkPerfOverlay.DrawPacketLossGraph (Boolean)[InGame]
+(true) *NetworkPerfOverlay.DrawGraph*にPacketLossグラフを追加する
+
+### NetworkPerfOverlay.DrawHighFreqGraph (Boolean)[InGame]
+(true) *NetworkPerfOverlay.DrawGraph*にHi Freqグラフを追加する
+
+### NetworkPerfOverlay.DrawPacketQueueGraph (Boolean)[InGame]
+(true) *NetworkPerfOverlay.DrawGraph*にPacketQグラフを追加する
+
+### NetworkPerfOverlay.DrawAutoScoreGraph (Boolean)[InGame]
+
+
+### NetworkPerfOverlay.DrawProjectileGraph (Boolean)[InGame]
+
+
+### NetworkPerfOverlay.LegendDisplayFormat (Uint32)[InGame]
+
+
+### NetworkPerfOverlay.GraphPos (Vec2)[InGame]
+(-1,-1)
+
 ### PerfOverlay.Enable (Boolean)[InGame]
 (true) *PerfOverlay.*～で有効にした項目を表示する
 
