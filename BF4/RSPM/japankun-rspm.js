@@ -75,7 +75,7 @@ BBLog.handle("add.plugin", {
 					
 					$("#japankun-rspm").text("");
 					
-					if (data.error || !data.results) {
+					if (data.error || data.results === null) {
 						$("#japankun-rspm").text("Connection Error!");
 						return;
 						
