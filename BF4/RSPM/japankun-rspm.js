@@ -1,7 +1,7 @@
 /**
 * @name RSPM BBLog Plugin
 * @author japankun
-* @version 0.2 2014/10/21
+* @version 0.3 2014/11/03
 * @url https://github.com/japankun/japankun.github.io
 */
 
@@ -13,7 +13,7 @@ BBLog.handle("add.plugin", {
 	/* Info */
 	id : "jpnkun-rspm",
 	name : "RSPM BBLog Plugin",
-	build : '20141021',
+	build : '20141103',
 	
 	translations : {
 		"en" : {
@@ -56,7 +56,8 @@ BBLog.handle("add.plugin", {
 		
 		requestRSPM : function (instance, soldierInfoName) {
 			
-			var openDataTableXML = "http://nyorittunow-japankun.rhcloud.com/rspm/goodgames_rspm.xml";
+			/*
+			var openDataTableXML = "http://japankun.github.io/BF4/RSPM/goodgames_rspm.xml";
 			var statsNowAPI      = "http://www.goodgames.jp/statsnow/bf4/api/rspm";
 			var statsNowQuery    = "?soldierName=" + soldierInfoName + "&gameMode=ConquestLarge0&numRounds=25";
 			var yahooPipesAPI    = "http://query.yahooapis.com/v1/public/yql?q=";
@@ -68,6 +69,11 @@ BBLog.handle("add.plugin", {
 				+ "'&format=json&callback=?";
 			
 			var queryUrl = yahooPipesAPI+yahooPipesQuery;
+			*/
+			
+			/* OpenShift API */
+			var openShiftAPI = "http://github-japankun.rhcloud.com/rspm/rspm.php?soldierInfoName=";
+			var queryUrl     = openShiftAPI + soldierInfoName + "&callback=?";
 			
 			$.getJSON(queryUrl,
 				
