@@ -56,7 +56,7 @@ BBLog.handle("add.plugin", {
 		
 		requestRSPM : function (instance, soldierInfoName) {
 			
-			var openDataTableXML = "https://japankun.github.io/BF4/RSPM/goodgames_rspm.xml";
+			var openDataTableXML = "http://raw.githubusercontent.com/japankun/japankun.github.io/master/BF4/RSPM/goodgames_rspm.xml";
 			var statsNowAPI      = "http://www.goodgames.jp/statsnow/bf4/api/rspm";
 			var statsNowQuery    = "?soldierName=" + soldierInfoName + "&gameMode=ConquestLarge0&numRounds=25";
 			var yahooPipesAPI    = "http://query.yahooapis.com/v1/public/yql?q=";
