@@ -18,5 +18,5 @@ http://japankun.github.io/BF4/RSPM/japankun-rspm.js
 
 ####利用サービスなど
 - [Real SPM calculator "StatsNow!!"](http://www.goodgames.jp/statsnow/bf4/)
-- [Yahoo Query Language](https://developer.yahoo.com/yql/)
+- [Yahoo Query Language](https://developer.yahoo.com/yql/)利用やめました
 - [Better Battlelog](http://getbblog.com/en/)
