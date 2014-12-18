@@ -43,7 +43,7 @@ BBLog.handle("add.plugin", {
 			
 			if (!$('#japankun-datetime').length) {
 				
-				var unixTime = $(".base-ago").attr("data-timestamp");
+				var unixTime = $("#battlereport-metadata > .base-ago").attr("data-timestamp");
 				var date = new Date(unixTime*1000);
 				
 				
