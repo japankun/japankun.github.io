@@ -44,7 +44,7 @@ BBLog.handle("add.plugin", {
 			if (!$('#japankun-datetime').length) {
 				
 				var unixTime = $(".base-ago").attr("data-timestamp");
-				var date = new Date(unixTime);
+				var date = new Date(unixTime*1000);
 				
 				
 				$(".base-ago").before('<span id="japankun-datetime" >'+date.toLocaleString()+'</span> - ');
