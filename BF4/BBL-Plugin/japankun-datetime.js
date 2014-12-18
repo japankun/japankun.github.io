@@ -47,7 +47,7 @@ BBLog.handle("add.plugin", {
 				var date = new Date(unixTime*1000);
 				
 				
-				$(".base-ago").before('<span id="japankun-datetime">'+
+				$(".battlereport-metadata-inner .base-ago").before('<span id="japankun-datetime">'+
 					date.getFullYear()+"/"+(date.getMonth()+1)+"/"+
 					date.getDate()+" "+date.toLocaleTimeString()+'</span> - ');
 				
