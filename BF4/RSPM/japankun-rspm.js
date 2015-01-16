@@ -1,7 +1,7 @@
 /**
 * @name RSPM BBLog Plugin
 * @author japankun
-* @version 0.3 2014/11/03
+* @version 0.4 2015/01/16
 * @url https://github.com/japankun/japankun.github.io
 */
 
@@ -13,11 +13,25 @@ BBLog.handle("add.plugin", {
 	/* Info */
 	id : "jpnkun-rspm",
 	name : "RSPM BBLog Plugin",
-	build : '20141103',
+	build : '20150116',
+	
+	configFlags: [
+		["option.show-rspm-value", 1],
+		["option.show-rspm-cq"   , 1],
+		["option.show-rspm-tdm"  , 0],
+		["option.show-rspm-rush" , 0],
+		["option.show-rspm-dom"  , 0]
+	],
 	
 	translations : {
 		"en" : {
-			"jpnkunrspm.enable" : "Enable RSPM Plugin"
+			"jpnkunrspm.enable"      : "Enable RSPM Plugin",
+			"option.show-rspm-value" : "Show RSPM Value (25Rounds)"+
+				"<br>Priority: Domination>Rush>TDM>Conquest Large",
+			"option.show-rspm-cq"    : "Conquest Large",
+			"option.show-rspm-tdm"   : "Team DeathMatch",
+			"option.show-rspm-rush"  : "Rush",
+			"option.show-rspm-dom"   : "Domination"
 		}
 	},
 	
@@ -26,7 +40,13 @@ BBLog.handle("add.plugin", {
 	
 	domchange : function(instance){
 		
-		if (BBLog.cache("mode") == "bf4" && instance.japankunRSPM.checkPageUrl("^/bf4/(.+?/)?soldier/.+?/stats/.+?/pc/$")) {
+		if (!instance.storage("option.show-rspm-value")) {
+			return;
+		}
+		
+		if (BBLog.cache("mode") == "bf4"
+		&& instance.japankunRSPM.checkPageUrl("^/bf4/(.+?/)?soldier/.+?/stats/.+?/pc/$")) {
+			
 			if ($("#overview-skill-value").length && !$('#japankun-rspm').length) {
 				instance.japankunRSPM.init(instance);
 			}
@@ -56,6 +76,19 @@ BBLog.handle("add.plugin", {
 		
 		requestRSPM : function (instance, soldierInfoName) {
 			
+			var gameMode;
+			
+			if (instance.storage("option.show-rspm-dom")) {
+				gameMode = "Domination0";
+			} else if (instance.storage("option.show-rspm-rush")) {
+				gameMode = "RushLarge0";
+			} else if (instance.storage("option.show-rspm-tdm")) {
+				gameMode = "TeamDeathMatch0";
+			} else {
+				gameMode = "ConquestLarge0";
+			}
+			
+			
 			/*
 			var openDataTableXML = "http://japankun.github.io/BF4/RSPM/goodgames_rspm.xml";
 			var statsNowAPI      = "http://www.goodgames.jp/statsnow/bf4/api/rspm";
@@ -71,8 +104,8 @@ BBLog.handle("add.plugin", {
 			var queryUrl = yahooPipesAPI+yahooPipesQuery;
 			*/
 			
-			/* OpenShift API */
-			var openShiftAPI = "http://github-japankun.rhcloud.com/rspm/rspm.php?soldierInfoName=";
+			var openShiftAPI = "http://github-japankun.rhcloud.com/rspm/rspm.php"
+				+"?gameMode="+gameMode+"&soldierInfoName=";
 			var queryUrl     = openShiftAPI + soldierInfoName + "&callback=?";
 			
 			$.getJSON(queryUrl,
