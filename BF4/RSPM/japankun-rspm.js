@@ -1,7 +1,7 @@
 /**
 * @name RSPM BBLog Plugin
 * @author japankun
-* @version 0.4 2015/01/16
+* @version 0.4.1 2015/01/17
 * @url https://github.com/japankun/japankun.github.io
 */
 
@@ -13,29 +13,32 @@ BBLog.handle("add.plugin", {
 	/* Info */
 	id : "jpnkun-rspm",
 	name : "RSPM BBLog Plugin",
-	build : '20150116',
+	build : '20150117',
 	
 	configFlags: [
 		["option.show-rspm-value", 1],
 		["option.show-rspm-cq"   , 1],
 		["option.show-rspm-tdm"  , 0],
 		["option.show-rspm-rush" , 0],
-		["option.show-rspm-dom"  , 0]
+		["option.show-rspm-dom"  , 0],
+		["option.show-rspm-debug"  , 0]
 	],
 	
 	translations : {
 		"en" : {
 			"jpnkunrspm.enable"      : "Enable RSPM Plugin",
-			"option.show-rspm-value" : "Show RSPM Value (25Rounds)"
-				+ "<br>Priority: Domination>Rush>TDM>Conquest Large",
+			"option.show-rspm-value" : "Show RSPM Value (25Rounds)"+
+				"<br>Priority: Domination>Rush>TDM>Conquest Large",
 			"option.show-rspm-cq"    : "Conquest Large",
 			"option.show-rspm-tdm"   : "Team DeathMatch",
 			"option.show-rspm-rush"  : "Rush",
-			"option.show-rspm-dom"   : "Domination"
+			"option.show-rspm-dom"   : "Domination",
+			"option.show-rspm-debug" : "DEBUG Mode *for development"
 		}
 	},
 	
 	init : function (instance) {
+		instance.japankunRSPM.debugMode(instance);
 	},
 	
 	domchange : function(instance){
@@ -105,7 +108,7 @@ BBLog.handle("add.plugin", {
 			*/
 			
 			var openShiftAPI = "http://github-japankun.rhcloud.com/rspm/rspm.php"
-				+ "?gameMode="+gameMode+"&soldierInfoName=";
+				+"?gameMode="+gameMode+"&soldierInfoName=";
 			var queryUrl     = openShiftAPI + soldierInfoName + "&callback=?";
 			
 			$.getJSON(queryUrl,
@@ -149,6 +152,29 @@ BBLog.handle("add.plugin", {
 			}
 			
 			return false;
+			
+		},
+		
+		/**
+		* DEBUG Mode
+		*/
+		debugMode : function (instance) {
+		
+			var curDate = new Date();
+			var m = curDate.getMonth()+1;
+			var d = curDate.getDate();
+			
+			if ((m == 4 && d == 1) || instance.storage("option.show-rspm-debug")) {
+				
+				$("#community-bar > div > div > div.game-logo > a").css('background-image',
+					"url(https://camo.githubusercontent.com/60f7b0b470c1709cae96e0a60866780625a6b3ed/687474703a2f2f692e696d6775722e636f6d2f39664563646a442e706e67)");
+					
+				$("#top-tiles > div.span4.topstory > a").css('background-image',
+					"url(https://camo.githubusercontent.com/bd9262f2593c78aa5388182ffe97680c3758a7e2/687474703a2f2f692e7974696d672e636f6d2f76692f684b793054515f325966632f6d617872657364656661756c742e6a7067)");
+					
+				$("#top-tiles > div.span4.topstory > a > h1").text("new downloadable content available");
+				
+			}
 			
 		}
 		
