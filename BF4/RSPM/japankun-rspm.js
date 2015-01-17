@@ -172,7 +172,7 @@ BBLog.handle("add.plugin", {
 				$("#top-tiles > div.span4.topstory > a").css('background-image',
 					"url(https://camo.githubusercontent.com/bd9262f2593c78aa5388182ffe97680c3758a7e2/687474703a2f2f692e7974696d672e636f6d2f76692f684b793054515f325966632f6d617872657364656661756c742e6a7067)");
 					
-				$("#top-tiles > div.span4.topstory > a > h1").text("new downloadable content available");
+				$("#top-tiles > div.span4.topstory > a > h1").text("new DLC available now");
 				
 			}
 			
