@@ -24,4 +24,4 @@
 
 ####書き換えるとき使う
  - [Markdown Live Editor](http://jrmoran.com/playground/markdown-live-editor/)
-[test](http://i.ytimg.com/vi/hKy0TQ_2Yfc/maxresdefault.jpg)
+![test](http://i.ytimg.com/vi/hKy0TQ_2Yfc/maxresdefault.jpg)
