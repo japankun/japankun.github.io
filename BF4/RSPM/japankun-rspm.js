@@ -21,14 +21,14 @@ BBLog.handle("add.plugin", {
 		["option.show-rspm-tdm"  , 0],
 		["option.show-rspm-rush" , 0],
 		["option.show-rspm-dom"  , 0],
-		["option.show-rspm-debug"  , 0]
+		["option.show-rspm-debug", 0]
 	],
 	
 	translations : {
 		"en" : {
 			"jpnkunrspm.enable"      : "Enable RSPM Plugin",
-			"option.show-rspm-value" : "Show RSPM Value (25Rounds)"+
-				"<br>Priority: Domination>Rush>TDM>Conquest Large",
+			"option.show-rspm-value" : "Show RSPM Value (25Rounds)"
+				+ "<br>Priority: Domination>Rush>TDM>Conquest Large",
 			"option.show-rspm-cq"    : "Conquest Large",
 			"option.show-rspm-tdm"   : "Team DeathMatch",
 			"option.show-rspm-rush"  : "Rush",
@@ -108,7 +108,7 @@ BBLog.handle("add.plugin", {
 			*/
 			
 			var openShiftAPI = "http://github-japankun.rhcloud.com/rspm/rspm.php"
-				+"?gameMode="+gameMode+"&soldierInfoName=";
+				+ "?gameMode=" + gameMode + "&soldierInfoName=";
 			var queryUrl     = openShiftAPI + soldierInfoName + "&callback=?";
 			
 			$.getJSON(queryUrl,
