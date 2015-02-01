@@ -4,4 +4,4 @@
 バトルログの進行過程ページにRSPMを表示するプラグイン
 
 ###[japankun-datetime.js](http://japankun.github.io/BF4/BBL-Plugin/japankun-datetime.js)
-バトルレポートの「～(hour|day|year)(|s) ago」を日付化するプラグイン
+バトルレポートの「～(hour|day|year)s? ago」を日付化するプラグイン
