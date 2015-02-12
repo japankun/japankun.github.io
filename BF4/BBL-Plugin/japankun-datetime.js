@@ -1,7 +1,7 @@
 /**
 * @name DATETIME BBLog Plugin
 * @author japankun
-* @version 0.1 2014/12/18
+* @version 0.2 2015/02/13
 * @url https://github.com/japankun/japankun.github.io
 */
 
@@ -13,7 +13,7 @@ BBLog.handle("add.plugin", {
 	/* Info */
 	id : "jpnkun-datetime",
 	name : "DATETIME BBLog Plugin",
-	build : '20141218',
+	build : '20150213',
 	
 	translations : {
 		"en" : {
@@ -27,7 +27,7 @@ BBLog.handle("add.plugin", {
 	domchange : function(instance){
 		
 		if (BBLog.cache("mode") == "bf4" && instance.japankunDATETIME.checkPageUrl("^/bf4/(.+?/)?battlereport/show/.+?/.+?/(.+?/)?$")) {
-			if ($("#battlereport-metadata").length) {
+			if ($("#battlereport-metadata").length && !$('#japankun-datetime').length) {
 				instance.japankunDATETIME.init(instance);
 			}
 		}
