@@ -28,5 +28,5 @@ VALUE＝(RSPM*2 + KDR*350 + KPM*1170 - DPM*900) / 3
 - [Real SPM calculator "StatsNow!!"](http://www.goodgames.jp/statsnow/bf4/)
 - [Better Battlelog](http://getbblog.com/en/)
 
-####従来使用していたサービスなど
+####以前利用していたサービスなど
 - [Yahoo Query Language](https://developer.yahoo.com/yql/)
