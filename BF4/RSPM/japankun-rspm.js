@@ -1,7 +1,7 @@
 /**
 * @name RSPM BBLog Plugin
 * @author japankun
-* @version 0.5.1 2015/03/14
+* @version 0.5.2 2015/03/15
 * @url https://github.com/japankun/japankun.github.io
 */
 
@@ -13,7 +13,7 @@ BBLog.handle("add.plugin", {
 	/* Info */
 	id : "jpnkun-rspm",
 	name : "RSPM BBLog Plugin",
-	build : '20150314',
+	build : '20150315',
 	
 	configFlags: [
 		["option.show-rspm-value", 1],
@@ -62,11 +62,22 @@ BBLog.handle("add.plugin", {
 	*/
 	japankunRSPM : {
 		
+		statsValue : {
+			deaths     : 0,
+			kills      : 0,
+			timePlayed : 0,
+			rspm       : 0,
+			rspmkdr    : 0.01,
+			rspmkpm    : 0.01,
+			kdr        : 0.01,
+			kpm        : 0.01,
+			dpm        : 0.01,
+			value      : 0
+		},
+		
 		init : function(instance){
 			
 			if (!$('#japankun-rspm').length) {
-				
-				var soldierInfoName = $(".soldier-info-name span:last").text();
 				
 				// Original SPM Column
 				$("#overview-skill-value").css("margin-top", "0");
@@ -75,6 +86,9 @@ BBLog.handle("add.plugin", {
 				$(".overview-skill-bar").after('<p id="japankun-rspm" style="margin:-.1em 0 1.3em 0;font-size:medium;">loading...</p>');
 				$(".overview-skill-bar").css("margin", "-.6em auto 0.4em auto");
 				
+				var soldierInfoName = $(".soldier-info-name span:last").text();
+				
+				instance.japankunRSPM.requestWRSWStats(instance);
 				instance.japankunRSPM.requestRSPM(instance, soldierInfoName);
 				
 			}
@@ -111,22 +125,16 @@ BBLog.handle("add.plugin", {
 						
 					}
 					
-					// KDR
-					$("#japankun-rspm").append(
-						'<span style="display:block;width:111px;float:left;margin-top:.3em;">K/D:<span id="japankun-kdr-value">'
-						+ parseFloat(data.query.results.json.kdr).toFixed(3) + '</span></span>');
-						
-					// RSPM
-					$("#japankun-rspm").append(
-						'<span style="display:block;width:111px;float:left;font-size:small;" id="japankun-rspm-col">RSPM:<span id="japankun-rspm-value">'
-						+ Math.round(data.query.results.json.rspm) + '</span></span>');
-						
-					// KPM
-					$("#japankun-rspm").append(
-						'<span style="display:block;width:111px;float:left;margin-top:.3em;">KPM:<span id="japankun-kpm-value">'
-						+ parseFloat(data.query.results.json.kpm).toFixed(3) + '</span></span>');
+					var json = data.query.results.json;
 					
-					instance.japankunRSPM.requestWRSWOverView();
+					// RSPM KDR
+					instance.japankunRSPM.statsValue.rspmkdr = parseFloat(json.kdr).toFixed(3);
+					// RSPM
+					instance.japankunRSPM.statsValue.rspm    = Math.round(json.rspm);
+					// RSPM KPM
+					instance.japankunRSPM.statsValue.rspmkpm = parseFloat(json.kpm).toFixed(3);
+					
+					instance.japankunRSPM.renderHTML(instance);
 					
 			}).fail(function() {
     				$("#japankun-rspm").text("Connection Error!");
@@ -134,42 +142,70 @@ BBLog.handle("add.plugin", {
 			
 		},
 		
-		requestWRSWOverView : function () {
+		requestWRSWStats : function (instance) {
 			
 			var personaId    = location.href.match(/^.*\/stats\/(\d+)\/pc\/$/);
-			var WRSWstatsAPI = "http://battlelog.battlefield.com/bf4/warsawoverviewpopulate/" + personaId[1] + "/1/";
+			var WRSWAPI = "http://battlelog.battlefield.com/bf4/warsawoverviewpopulate/"
+				+ personaId[1] + "/1/";
 			
-			$.getJSON(WRSWstatsAPI,
+			$.getJSON(WRSWAPI,
 				
 				function(data) {
 					
-					var statsValue = {
-						deaths     : data.data.overviewStats.deaths,
-						kills      : data.data.overviewStats.kills,
-						timePlayed : data.data.overviewStats.timePlayed,
-						rspm       : $("#japankun-rspm-value").text(),
-						kdr        : 0.01,
-						kpm        : 0.01,
-						dpm        : 0.01,
-						value      : 0
-					}
+					var overviewStats = data.data.overviewStats;
+					
+					instance.japankunRSPM.statsValue.deaths = overviewStats.deaths;
+					instance.japankunRSPM.statsValue.kills  = overviewStats.kills;
+					instance.japankunRSPM.statsValue.timePlayed = overviewStats.timePlayed;
 					
 					// KDR
-					statsValue.kdr = Math.round((statsValue.kills / statsValue.deaths)*100)/100;
+					instance.japankunRSPM.statsValue.kdr = 
+						parseFloat((overviewStats.kills/overviewStats.deaths)).toFixed(2);
+						
 					// KPM
-					statsValue.kpm = Math.round((statsValue.kills / (statsValue.timePlayed / 60))*100)/100;
+					instance.japankunRSPM.statsValue.kpm = 
+						parseFloat((overviewStats.kills/(overviewStats.timePlayed/60))).toFixed(2);
+						
 					// DPM (Death/Min)
-					statsValue.dpm = Math.round((statsValue.deaths / (statsValue.timePlayed / 60))*100)/100;
+					instance.japankunRSPM.statsValue.dpm = 
+						parseFloat((overviewStats.deaths/(overviewStats.timePlayed/60))).toFixed(2);
 					
-					// VALUE Calculation
-					statsValue.value = Math.round((statsValue.rspm*2 + statsValue.kdr*350 + statsValue.kpm*1170 - statsValue.dpm*900) / 3);
-					
-					// Output
-					$("#japankun-rspm-value").after('<br>VALUE:<span id="japankun-rspm-value-value">'+statsValue.value+'</span>');
+					instance.japankunRSPM.renderHTML(instance);
 					
 			}).fail(function() {
 					$("#japankun-rspm-value").after('<br>'+"StatusEngine Error!");
 			});
+			
+		},
+		
+		renderHTML : function (instance) {
+			
+			var statsValue = instance.japankunRSPM.statsValue;
+			
+			// data check
+			if (!statsValue.rspm || !statsValue.kpm)
+				return;
+			
+			$("#japankun-rspm").text("");
+			
+			// RSPMKDR
+			$("#japankun-rspm").append(
+				'<span style="display:block;width:111px;float:left;margin-top:.3em;">'
+				+ 'K/D:<span id="japankun-kdr-value">'+statsValue.rspmkdr+'</span></span>');
+				
+			// RSPM / VALUE
+			$("#japankun-rspm").append(
+				'<span style="display:block;width:111px;float:left;font-size:small;">'
+				+ 'RSPM:<span id="japankun-rspm-value">'+statsValue.rspm+'</span><br>'
+				+ 'VALUE:<span id="japankun-rspm-value-value">'
+				+ Math.round((statsValue.rspm*2 + statsValue.kdr*350 + 
+					statsValue.kpm*1170 - statsValue.dpm*900) / 3)
+				+ '</span>');
+				
+			// RSPMKPM
+			$("#japankun-rspm").append(
+				'<span style="display:block;width:111px;float:left;margin-top:.3em;">'
+				+ 'KPM:<span id="japankun-kpm-value">'+statsValue.rspmkpm+'</span></span>');
 			
 		},
 		
