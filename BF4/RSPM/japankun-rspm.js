@@ -1,7 +1,7 @@
 /**
 * @name RSPM BBLog Plugin
 * @author japankun
-* @version 0.4.1 2015/01/17
+* @version 0.5.1 2015/03/14
 * @url https://github.com/japankun/japankun.github.io
 */
 
@@ -13,7 +13,7 @@ BBLog.handle("add.plugin", {
 	/* Info */
 	id : "jpnkun-rspm",
 	name : "RSPM BBLog Plugin",
-	build : '20150117',
+	build : '20150314',
 	
 	configFlags: [
 		["option.show-rspm-value", 1],
@@ -68,6 +68,10 @@ BBLog.handle("add.plugin", {
 				
 				var soldierInfoName = $(".soldier-info-name span:last").text();
 				
+				// Original SPM Column
+				$("#overview-skill-value").css("margin-top", "0");
+				
+				// JapanKun Plugin Column
 				$(".overview-skill-bar").after('<p id="japankun-rspm" style="margin:-.1em 0 1.3em 0;font-size:medium;">loading...</p>');
 				$(".overview-skill-bar").css("margin", "-.6em auto 0.4em auto");
 				
@@ -91,22 +95,6 @@ BBLog.handle("add.plugin", {
 				gameMode = "ConquestLarge0";
 			}
 			
-			
-			/*
-			var openDataTableXML = "http://japankun.github.io/BF4/RSPM/goodgames_rspm.xml";
-			var statsNowAPI      = "http://www.goodgames.jp/statsnow/bf4/api/rspm";
-			var statsNowQuery    = "?soldierName=" + soldierInfoName + "&gameMode=ConquestLarge0&numRounds=25";
-			var yahooPipesAPI    = "http://query.yahooapis.com/v1/public/yql?q=";
-			var yahooPipesQuery  = encodeURIComponent("USE '")
-				+ encodeURIComponent(openDataTableXML)
-				+ encodeURIComponent("' AS remote;SELECT * FROM remote WHERE url='")
-				+ encodeURIComponent(statsNowAPI)
-				+ encodeURIComponent(statsNowQuery)
-				+ "'&format=json&callback=?";
-			
-			var queryUrl = yahooPipesAPI+yahooPipesQuery;
-			*/
-			
 			var openShiftAPI = "http://github-japankun.rhcloud.com/rspm/rspm.php"
 				+ "?gameMode=" + gameMode + "&soldierInfoName=";
 			var queryUrl     = openShiftAPI + soldierInfoName + "&callback=?";
@@ -123,24 +111,64 @@ BBLog.handle("add.plugin", {
 						
 					}
 					
-					//KDR
+					// KDR
 					$("#japankun-rspm").append(
-						'<span style="display:block;width:111px;float:left;">K/D:<span id="japankun-kdr-value">'
+						'<span style="display:block;width:111px;float:left;margin-top:.3em;">K/D:<span id="japankun-kdr-value">'
 						+ parseFloat(data.query.results.json.kdr).toFixed(3) + '</span></span>');
 						
-					//RSPM
+					// RSPM
 					$("#japankun-rspm").append(
-						'<span style="display:block;width:111px;float:left;">RSPM:<span id="japankun-rspm-value">'
+						'<span style="display:block;width:111px;float:left;font-size:small;" id="japankun-rspm-col">RSPM:<span id="japankun-rspm-value">'
 						+ Math.round(data.query.results.json.rspm) + '</span></span>');
 						
-					//KPM
+					// KPM
 					$("#japankun-rspm").append(
-						'<span style="display:block;width:111px;float:left;">KPM:<span id="japankun-kpm-value">'
+						'<span style="display:block;width:111px;float:left;margin-top:.3em;">KPM:<span id="japankun-kpm-value">'
 						+ parseFloat(data.query.results.json.kpm).toFixed(3) + '</span></span>');
-						
+					
+					instance.japankunRSPM.requestWRSWOverView();
 					
 			}).fail(function() {
-    				$("#japankun-rspm").text("Error!");
+    				$("#japankun-rspm").text("Connection Error!");
+			});
+			
+		},
+		
+		requestWRSWOverView : function () {
+			
+			var personaId    = location.href.match(/^.*\/stats\/(\d+)\/pc\/$/);
+			var WRSWstatsAPI = "http://battlelog.battlefield.com/bf4/warsawoverviewpopulate/" + personaId[1] + "/1/";
+			
+			$.getJSON(WRSWstatsAPI,
+				
+				function(data) {
+					
+					var statsValue = {
+						deaths     : data.data.overviewStats.deaths,
+						kills      : data.data.overviewStats.kills,
+						timePlayed : data.data.overviewStats.timePlayed,
+						rspm       : $("#japankun-rspm-value").text(),
+						kdr        : 0.01,
+						kpm        : 0.01,
+						dpm        : 0.01,
+						value      : 0
+					}
+					
+					// KDR
+					statsValue.kdr = Math.round((statsValue.kills / statsValue.deaths)*100)/100;
+					// KPM
+					statsValue.kpm = Math.round((statsValue.kills / (statsValue.timePlayed / 60))*100)/100;
+					// DPM (Death/Min)
+					statsValue.dpm = Math.round((statsValue.deaths / (statsValue.timePlayed / 60))*100)/100;
+					
+					// VALUE Calculation
+					statsValue.value = Math.round((statsValue.rspm*2 + statsValue.kdr*350 + statsValue.kpm*1170 - statsValue.dpm*900) / 3);
+					
+					// Output
+					$("#japankun-rspm-value").after('<br>VALUE:<span id="japankun-rspm-value-value">'+statsValue.value+'</span>');
+					
+			}).fail(function() {
+					$("#japankun-rspm-value").after('<br>'+"StatusEngine Error!");
 			});
 			
 		},
