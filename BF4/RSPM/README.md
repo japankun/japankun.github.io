@@ -8,7 +8,7 @@ BF4バトルログ(進行過程ページ)にgoodgamesさんのRSPMとVALUEを表
 
 - 初期設定ではコンクエストラージ25ラウンド表示です。
 - TDM/Domination/Rushの表示をしたい場合はベターバトルログのメニュー下部で設定してください。
-- チェックボックスを入れているゲームモードを下記の優先度を使用してRSPMを表示します。
+- オプションで設定されたRSPMは下記の優先度を使用して表示します。
 - Domination>Rush>TDM>Conquest Large
 
 使用するにはBetter BattlelogメニューのPluginsから下のURLを追加してやってください。
