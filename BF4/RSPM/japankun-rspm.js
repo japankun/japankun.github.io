@@ -231,7 +231,7 @@ BBLog.handle("add.plugin", {
 			if ((m == 4 && d == 1) || instance.storage("option.show-rspm-debug")) {
 				
 				$("#community-bar > div > div > div.game-logo > a").css('background-image',
-					"url(https://camo.githubusercontent.com/60f7b0b470c1709cae96e0a60866780625a6b3ed/687474703a2f2f692e696d6775722e636f6d2f39664563646a442e706e67)");
+					"url(https://camo.githubusercontent.com/ef4ebad1ca42e344d8775f548b581b09678617bd/68747470733a2f2f7363656a6170616e6b756e2e66696c65732e776f726470726573732e636f6d2f323031352f30332f6266347061796c696e652e706e67)");
 					
 				$("#top-tiles > div.span4.topstory > a").css('background-image',
 					"url(https://camo.githubusercontent.com/bd9262f2593c78aa5388182ffe97680c3758a7e2/687474703a2f2f692e7974696d672e636f6d2f76692f684b793054515f325966632f6d617872657364656661756c742e6a7067)");
