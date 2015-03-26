@@ -236,11 +236,7 @@ BBLog.handle("add.plugin", {
 		*/
 		debugMode : function (instance) {
 
-			var curDate = new Date();
-			var m = curDate.getMonth()+1;
-			var d = curDate.getDate();
-
-			if ((m == 4 && d == 1) || instance.storage("option.show-rspm-debug")) {
+			if (instance.storage("option.show-rspm-debug")) {
 
 				$("#community-bar > div > div > div.game-logo > a").css('background-image',
 					"url(https://camo.githubusercontent.com/5d2fcb99804e264c038df764c7e7398da4a4fb76/68747470733a2f2f7363656a6170616e6b756e2e66696c65732e776f726470726573732e636f6d2f323031352f30332f6266347061796c696e65312e706e67)");
