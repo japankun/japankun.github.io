@@ -79,3 +79,26 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Manag
 DWORD値「EnablePrefetcher」の値を「0」にする
 
 ※設定後は再起動が必要
+
+###MTU値最適化
+####概要
+ネットワークに送信する最大データ量MTU(Maximum Transmission Unit)を適切な数値にすることで送信したデータが通信経路に存在する機器によって分割される事を防ぐ。
+
+####設定方法
+1. コマンドプロンプトで「ping -l 1500 -f google.co.jp」を実行する
+* 「パケットの断片化が必要ですが、DF が設定されています。」が出た場合は数値(1500)を少しずつ下げていく
+* **応答があった数値+28**が最適MTU値
+
+####最適MTU値別の数値
+|回線名|最適値|応答が来る最大の数値|
+|---|---|---|
+|フレッツ(西) 光プレミアム|1438|1410|
+|フレッツ(東) 光ネクスト|1454|1426|
+|auひかり 1Gbps|1492|1464|
+|NURO光|1500|1472|
+
+####信頼出来るソース
+- [フレッツ(西) 光プレミアム](https://www.xephion.ne.jp/is/support/enter_setup.html)
+- [フレッツ(東) 光ネクスト](http://faq.flets.com/faq/show/246)
+- auひかり 1Gbps *公式なソースなしお
+- [NURO光](http://www.bit-drive.ne.jp/support/technical/nuro-access/02-onu-led.html)
