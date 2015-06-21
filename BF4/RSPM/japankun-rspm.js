@@ -40,6 +40,8 @@ BBLog.handle("add.plugin", {
 	},
 
 	init : function (instance) {
+		console.log('%cJapanKun::%cRSPM Build '+instance.build,
+			'background-color:#000;color:#fff', 'background-color:#000;color:#99ffff');
 		instance.japankunRSPM.debugMode(instance);
 	},
 
