@@ -1,7 +1,7 @@
 /**
 * @name RSPM BBLog Plugin
 * @author japankun
-* @version 0.5.4 2015/06/01
+* @version 0.5.5 2015/06/22
 * @url https://github.com/japankun/japankun.github.io
 */
 
@@ -13,7 +13,7 @@ BBLog.handle("add.plugin", {
 	/* Info */
 	id : "jpnkun-rspm",
 	name : "RSPM BBLog Plugin",
-	build : '20150601',
+	build : '20150622',
 
 	configFlags: [
 		["option.show-rspm-value", 1],
@@ -65,12 +65,12 @@ BBLog.handle("add.plugin", {
 		&& instance.storage("option.show-rspm-graph")
 		&& instance.japankunRSPM.checkPageUrl("^/bf4/(.+?/)?soldier/.+?/weapons/.+?/.*")) {
 			
-			if (!$('#japankun-weapondamage').length && $('.track-weapon-stats .fire-modes').length) {
+			if (!$('#japankun-weapondamage').length && $('.track-weapon-stats .firemode-icon').length) {
 				console.log("RUN Japankun WEAPON DAMAGE Init");
 				$(".track-weapon-stats:first").after('<br><br><div class="clearfix image-container">'+
 					'<img id="japankun-weapondamage"></div>');
 				
-			} else if ($('.track-weapon-stats .fire-modes').length) {
+			} else if ($('.track-weapon-stats .firemode-icon').length) {
 				instance.japankunRSPM.damageGraph($('.box-content h4').text());
 			}
 			
