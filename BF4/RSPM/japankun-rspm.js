@@ -69,7 +69,7 @@ BBLog.handle("add.plugin", {
 			
 			if (!$('#japankun-weapondamage').length && $('.track-weapon-stats .firemode-icon').length) {
 				console.log("RUN Japankun WEAPON DAMAGE Init");
-				$(".track-weapon-stats:first").after('<br><br><div class="clearfix image-container">'+
+				$(".track-weapon-stats:first").after('<div class="clearfix image-container">'+
 					'<img id="japankun-weapondamage"></div>');
 				
 			} else if ($('.track-weapon-stats .firemode-icon').length) {
