@@ -3,7 +3,8 @@
 |---|---|
 |CPU|Intel Core i7-2600K@3.40GHz|
 |MEM|CFD W3U1333Q-4Gx2 (DDR3 PC3-10600 4GBx4)|
-|VGA|GF PGTX760-OC/2GD5 MINI [PCIExp 2GB]|
+|VGA|～2015/06 GALAXY GF PGTX760-OC/2GD5 MINI [PCIExp 2GB]|
+|VGA|2015/06～ Palit GeForce GTX 960 Super JetStream NE5X960T1041-2060J [PCIExp 2GB]|
 |OS|Windows 8.1 Pro Update with Media Center 64bit|
 |モニタ|BENQ XL2411Z@144Hz|
 |マウス|Logicool G300r@2500dpi/1000Hz|
