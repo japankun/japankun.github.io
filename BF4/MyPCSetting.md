@@ -84,3 +84,19 @@
 |Hz|31|62|125|250|500|1k|2k|4k|8k|16k|
 |---|---|---|---|---|---|---|---|---|---|---|
 |db|-4.1|2.9|0.9|-1.9|-1.0|1.5|6.3|3.1|3.6|3.3|
+
+###ネットワーク設定
+|機能|設定値|
+|---|---|
+|Receive-Side Scaling 状態|disabled|
+|Chimney オフロード状態|disabled|
+|NetDMA 状態|disabled|
+|Direct Cache Access (DCA)|disabled|
+|受信ウィンドウ自動チューニング レベル|disabled|
+|アドオン輻輳制御プロバイダー|none|
+|ECN 機能|disabled|
+|RFC 1323タイムスタンプ|disabled|
+|初期 RTO|3000|
+|Receive Segment Coalescing 状態|disabled|
+|非 Sack の Rtt 回復性|disabled|
+|SYN の最大再送信数|2|
