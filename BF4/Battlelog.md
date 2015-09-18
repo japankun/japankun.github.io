@@ -45,3 +45,7 @@
 |(CA)Black Friday|XP1_MallCops|
 |(CA)Code Blue|XP1_Nights|
 |(CA)The Beat|XP1_Projects|
+|(RO)Break Pointe|XP2_Coastal|
+|(RO)Museum|XP2_Museum02|
+|(RO)Precinct 7|XP2_Precinct7|
+|(RO)The Docks|XP2_Cargoship|
