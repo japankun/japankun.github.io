@@ -28,6 +28,8 @@
 |![](http://eaassets-a.akamaihd.net/bl-cdn/cdnprefix/9c0b010cd947f38bf5e87df5e82af64e0ffdc12fg/public/base/bf4/map_images/62x42/xp4_subbase.jpg)|(FS)Hammerhead|XP4_SubBase|
 |![](http://eaassets-a.akamaihd.net/bl-cdn/cdnprefix/9c0b010cd947f38bf5e87df5e82af64e0ffdc12fg/public/base/bf4/map_images/62x42/xp4_arctic.jpg)|(FS)Operation Whiteout|XP4_Arctic|
 |![](http://eaassets-a.akamaihd.net/bl-cdn/cdnprefix/9c0b010cd947f38bf5e87df5e82af64e0ffdc12fg/public/base/bf4/map_images/62x42/xp4_titan.jpg)|(FS)Hangar 21|XP4_Titan|
+|![](http://eaassets-a.akamaihd.net/bl-cdn/cdnprefix/9c0b010cd947f38bf5e87df5e82af64e0ffdc12fg/public/base/bf4/map_images/62x42/xp5_night_01.jpg)|(NO)Zavod: Graveyard Shift|XP5_Night|
+|![](http://eaassets-a.akamaihd.net/bl-cdn/cdnprefix/9c0b010cd947f38bf5e87df5e82af64e0ffdc12fg/public/base/bf4/map_images/62x42/xp6_cmp.jpg)|(CMP)Operation Outbreak|XP6_CMP|
 
 ###BFHマップ
 |(DLC)マップ名|内部名|
