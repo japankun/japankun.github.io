@@ -41,7 +41,19 @@ C:\Program Files (x86)\Origin Games\Battlefield 4
 ```
 
 これらのうちハードディスクに移すことのできるフォルダはXpack0～6です。たったこれだけか、と思いのそこのあなた。これらが占めるファイルサイズを考えたことはありますか？
-Xpack0～Xpack6までを合計すると33GBにもなり、現在のバトルフィールド4のおよそ半分のSSD容量を節約できることになります。すごい！
+
+|拡張パック|(GB)|
+|:---|---:|
+|(Xpack1) China Rising|4.43|
+|(Xpack0) Second Assault|5.33|
+|(Xpack2) Naval Strike|4.96|
+|(Xpack3) Dragon's Theeth|7.22|
+|(Xpack4) Final Stand|7.09|
+|(Xpack5) Night Operations|0.96|
+|(Xpack6) Community Operations|2.83|
+|**合計**|**32.82**|
+
+Xpack0～Xpack6までを合計すると約33GBにもなり、現在のバトルフィールド4のおよそ半分のSSD容量を節約できることになります。すごい！
 
 では本題です。
 シンボリックリンクを張るにはまず、Xpack0～6を他のハードディスクに移す必要があります。例では以下の環境で進めていきます。
