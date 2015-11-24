@@ -1,19 +1,18 @@
 /**
 * @name RSPM BBLog Plugin
 * @author japankun
-* @version 0.5.5 2015/06/22
+* @version 0.5.8 2015/11/24
 * @url https://github.com/japankun/japankun.github.io
 */
 
 // My Code Works I Don't Know Why
-
 // initialize plugin
 BBLog.handle("add.plugin", {
 
 	/* Info */
 	id : "jpnkun-rspm",
 	name : "RSPM BBLog Plugin",
-	build : '20150622',
+	build : '20151124',
 
 	configFlags: [
 		["option.show-rspm-value", 1],
@@ -22,7 +21,8 @@ BBLog.handle("add.plugin", {
 		["option.show-rspm-rush" , 0],
 		["option.show-rspm-dom"  , 0],
 		["option.show-rspm-debug", 0],
-		["option.show-rspm-graph", 1]
+		["option.show-rspm-graph", 1],
+		["option.resize-weapons" , 0]
 	],
 
 	translations : {
@@ -35,23 +35,29 @@ BBLog.handle("add.plugin", {
 			"option.show-rspm-rush"  : "Rush",
 			"option.show-rspm-dom"   : "Domination",
 			"option.show-rspm-debug" : "DEBUG Mode *for development",
-			"option.show-rspm-graph" : "Enable Weapons Damage Graph"
+			"option.show-rspm-graph" : "Enable Weapons Damage Graph",
+			"option.resize-weapons"  : "Enable Accessories Resize"
 		}
+
 	},
 
 	init : function (instance) {
-		console.log('%cJapanKun::%cRSPM Build '+instance.build,
+		console.log('%cJapanKun::%cRSPM Build ' + instance.build,
 			'background-color:#000;color:#fff', 'background-color:#000;color:#99ffff');
 		instance.japankunRSPM.debugMode(instance);
 	},
 
-	domchange : function(instance){
+	domchange : function (instance) {
+
+		console.log("CALL domchange");
+
+		if (BBLog.cache("mode") != "bf4")
+			return;
 
 		/**
 		* RSPM/VALUE
 		*/
-		if (BBLog.cache("mode") == "bf4"
-		&& instance.storage("option.show-rspm-value")
+		if (instance.storage("option.show-rspm-value")
 		&& instance.japankunRSPM.checkPageUrl("^/bf4/(.+?/)?soldier/.+?/stats/.+?/pc/$")) {
 
 			if ($("#overview-skill-value").length && !$('#japankun-rspm').length) {
@@ -59,23 +65,46 @@ BBLog.handle("add.plugin", {
 				instance.japankunRSPM.init(instance);
 			}
 		}
-		
+
 		/**
 		* WEAPON DAMAGE GRAPH
 		*/
-		if (BBLog.cache("mode") == "bf4"
-		&& instance.storage("option.show-rspm-graph")
+		if (instance.storage("option.show-rspm-graph")
 		&& instance.japankunRSPM.checkPageUrl("^/bf4/(.+?/)?soldier/.+?/weapons/.+?/.*")) {
-			
+
 			if (!$('#japankun-weapondamage').length && $('.track-weapon-stats .firemode-icon').length) {
 				console.log("RUN Japankun WEAPON DAMAGE Init");
-				$(".track-weapon-stats:first").after('<div class="clearfix image-container">'+
-					'<img id="japankun-weapondamage"></div>');
-				
+				$(".track-weapon-stats:first").after('<div class="clearfix image-container">'
+					+ '<img id="japankun-weapondamage"></div>');
+
 			} else if ($('.track-weapon-stats .firemode-icon').length) {
 				instance.japankunRSPM.damageGraph($('.box-content h4').text());
 			}
-			
+
+		}
+
+		/**
+		* Weapon Accessories Resize
+		*/
+		if (instance.storage("option.resize-weapons")
+		&& instance.japankunRSPM.checkPageUrl("^/bf4/(.+?/)?soldier/.+?/weapons?(unlocks)?/.+?/.*")) {
+
+			// Weapon Fancy Image
+			if ($("img.weapon_unlock")) {
+				$("img.weapon_unlock").width('192');
+				$("img.weapon_unlock").height('192');
+				$(".stat-details .image-container .squarelarge").css("margin", "-20% auto");
+			}
+
+			// Attachment Area
+			if ($("ul.weapon-accessories")) {
+				$("ul.weapon-accessories > li").width('63');
+				$("ul.weapon-accessories > li:nth-child(4n+1)").css("margin-left", "1px");
+				$("ul.weapon-accessories > li:nth-child(5n+1)").css("margin-left", "0");
+				$("ul.weapon-accessories > li:nth-child(5n+1)").css("width", "64");
+
+			}
+
 		}
 
 	},
@@ -98,7 +127,7 @@ BBLog.handle("add.plugin", {
 			value      : 0
 		},
 
-		init : function(instance) {
+		init : function (instance) {
 
 			if (!$('#japankun-rspm').length) {
 
@@ -143,7 +172,7 @@ BBLog.handle("add.plugin", {
 
 			$.getJSON(queryUrl,
 
-				function(data) {
+				function (data) {
 
 					$("#japankun-rspm").text("");
 
@@ -183,7 +212,7 @@ BBLog.handle("add.plugin", {
 
 			$.getJSON(WRSWAPI,
 
-				function(data) {
+				function (data) {
 
 					var ovStats = data.data.overviewStats;
 
@@ -242,11 +271,11 @@ BBLog.handle("add.plugin", {
 				+ 'KPM:<span id="japankun-kpm-value">'+statsValue.rspmkpm+'</span></span>');
 
 		},
-		
+
 		damageGraph : function (weaponName) {
-			
+
 			var weaponDamage = {
-				
+
 				//AR
 				"AEK-971"  : "24.5_18_12.5_60",
 				"AK-12"    : "24.5_18_12.5_60",
@@ -264,7 +293,7 @@ BBLog.handle("add.plugin", {
 				"SAR-21"   : "24.5_18_12.5_60",
 				"SCAR-H"   : "33_21.6_8_60",
 				"AUG A3"   : "24.5_18_12.5_60",
-				
+
 				//CARBINE
 				"A-91"       : "24_15.4_8_50",
 				"ACW-R"      : "24_15.4_8_50",
@@ -278,7 +307,7 @@ BBLog.handle("add.plugin", {
 				"MTAR-21"    : "24_15.4_8_50",
 				"SG553"      : "24_15.4_8_50",
 				"TYPE-95B-1" : "24_15.4_8_50",
-				
+
 				//LMG
 				"AWS"          : "24.5_18_8_65",
 				"L86A2"        : "24.5_18_8_65",
@@ -293,7 +322,7 @@ BBLog.handle("add.plugin", {
 				"RPK-12"       : "24.5_18_8_65",
 				"TYPE 88 LMG"  : "24.5_18_8_65",
 				"U-100 MK5"    : "24.5_18_8_65",
-				
+
 				//PDW
 				"AS VAL"  : "27_15.4_5_43.67",
 				"CBJ-MS"  : "22.5_14.3_20_47.34",
@@ -309,7 +338,7 @@ BBLog.handle("add.plugin", {
 				"SR-2"    : "23.5_13.5_16.67_50",
 				"UMP-45"  : "30_15.4_8_50",
 				"UMP-9"   : "22.5_13.5_20_50",
-				
+
 				//DMR
 				"ACE 53 SV"  : "45_38_15_80",
 				"M39 EMR"    : "45_38_15_80",
@@ -319,7 +348,7 @@ BBLog.handle("add.plugin", {
 				"SCAR-H SV"  : "45_38_15_80",
 				"SKS"        : "43_34_8_60",
 				"SVD-12"     : "45_38_15_60",
-				
+
 				//SR
 				"AMR-2"       : "110_110_0_0",
 				"AMR-2 CQB"   : "110_110_0_0",
@@ -341,7 +370,7 @@ BBLog.handle("add.plugin", {
 				"SR338"       : "50_38_15_150",
 				"338-RECON"   : "100_59_12.5_150",
 				"SV-98"       : "100_59_12.5_100",
-				
+
 				//HG
 				".44 MAGNUM" : "56_37.5_12.5_50",
 				"93R"        : "22_12.1_8_55",
@@ -359,7 +388,7 @@ BBLog.handle("add.plugin", {
 				"QSZ-92"     : "22_13.5_8_60",
 				"SW40"       : "56_28_15_37",
 				"UNICA 6"    : "56_28_15_37",
-				
+
 				//SG (NO DATA)
 				"UTS 15"       : "",
 				"USAS-12 FLIR" : "",
@@ -372,29 +401,32 @@ BBLog.handle("add.plugin", {
 				"DAO-12"       : "",
 				"870 MCS"      : "",
 				"SHORTY 12G"   : "",
-				
+
 				//PHANTOM
 				"PHANTOM"      : "",
-				
+
+				//PICKUP
+				"M60 ULT"      : "41_23.6_8_65",
+
 				//DMG DATA
-				"LAST UPDATE"  : "20150602",
+				"LAST UPDATE"  : "20151124",
 				"BANPEIKUN"    : ""
-				
+
 			};
-			
+
 			console.log('fetch:'+weaponName);
 			//console.log(weaponDamage[weaponName]);
-			
+
 			var weaponGraph = weaponDamage[weaponName];
-			
+
 			if (weaponGraph.length) {
-					
+
 				var dmg = weaponGraph.split('_');
-				
+
 				// graph
 				$('#japankun-weapondamage').attr('src',
 					'http://symthic.com/goods/i/bf4/dom/'+weaponGraph+'.png');
-				
+
 				// tooltip
 				$('#japankun-weapondamage').attr('data-tooltip',
 					'Max dmg: '+dmg[0]+'<br>'+
@@ -402,13 +434,13 @@ BBLog.handle("add.plugin", {
 					'Drop-off start: '+dmg[2]+'m<br>'+
 					'Drop-off end: '+dmg[3]+'m'
 				);
-				
+
 				console.log('return:'+dmg);
-				
+
 			}
-			
+
 			return weaponGraph;
-			
+
 		},
 
 		checkPageUrl : function (pattern) {
