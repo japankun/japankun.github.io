@@ -9,6 +9,8 @@
  - RSPM BBLog Plugin置き場
 - MyPCSetting.md
  - うちのおパソコン設定
+- SSDSpaceSavingTips.md
+ - BF4におけるSSDの節約方法について書きました。
 - japans_note.md
  - よくあるネットゲーム向けとされるネットワーク設定
 - user.cfg
