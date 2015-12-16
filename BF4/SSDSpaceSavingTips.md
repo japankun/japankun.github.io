@@ -1,6 +1,6 @@
 ###JのSSD節約術
 
-バトルフィールド4がリリースされて早2年。現在、すべてのDLCをダウンロードしている中毒者の方々は、約62GBものストレージを~~無駄に~~消費していると思います。先日もしょうもないDLCと、神DLCがリリースされましたね。
+バトルフィールド4がリリースされて早2年。現在、すべてのDLCをダウンロードしている中毒者の方々は、約66GBものストレージを~~無駄に~~消費していると思います。先日もしょうもないDLCと、神DLCがリリースされましたね。
 
 そこでみなさん、SSD足りてますか？
 実は簡単な方法でSSDの容量を節約することができるんです。
@@ -37,10 +37,11 @@ C:\Program Files (x86)\Origin Games\Battlefield 4
   ├Xpack4/
   ├Xpack5/
   ├Xpack6/
+  ├Xpack7/
 ...
 ```
 
-これらのうちハードディスクに移すことのできるフォルダはXpack0～6です。たったこれだけか、と思いのそこのあなた。これらが占めるファイルサイズを考えたことはありますか？
+これらのうちハードディスクに移すことのできるフォルダはXpack0～7です。たったこれだけか、と思いのそこのあなた。これらが占めるファイルサイズを考えたことはありますか？
 
 |拡張パック|(GB)|
 |:---|---:|
@@ -51,12 +52,13 @@ C:\Program Files (x86)\Origin Games\Battlefield 4
 |(Xpack4) Final Stand|7.09|
 |(Xpack5) Night Operations|0.96|
 |(Xpack6) Community Operations|2.83|
-|**合計**|**32.82**|
+|(Xpack7) Legacy Operations|2.89|
+|**合計**|**35.71**|
 
-Xpack0～Xpack6までを合計すると約33GBにもなり、現在のバトルフィールド4のおよそ半分のSSD容量を節約できることになります。すごい！
+Xpack0～Xpack7までを合計すると約36GBにもなり、現在のバトルフィールド4のおよそ半分のSSD容量を節約できることになります。すごい！
 
 では本題です。
-シンボリックリンクを張るにはまず、Xpack0～6を他のハードディスクに移す必要があります。例では以下の環境で進めていきます。
+シンボリックリンクを張るにはまず、Xpack0～7を他のハードディスクに移す必要があります。例では以下の環境で進めていきます。
 
 #####インストールフォルダ
 ```
@@ -81,6 +83,7 @@ C:\Program Files (x86)\Origin Games\Battlefield 4\Update\Xpack3
 C:\Program Files (x86)\Origin Games\Battlefield 4\Update\Xpack4
 C:\Program Files (x86)\Origin Games\Battlefield 4\Update\Xpack5
 C:\Program Files (x86)\Origin Games\Battlefield 4\Update\Xpack6
+C:\Program Files (x86)\Origin Games\Battlefield 4\Update\Xpack7
 ```
 
 どうでしょうか？移動先フォルダの構成はこうなったと思います。
@@ -93,6 +96,7 @@ D:\Program Files\BF4-Xpack\
 ├Xpack4\
 ├Xpack5\
 ├Xpack6\
+├Xpack7\
 ```
 
 最後に管理者権限でコマンドプロンプトを開いて以下のコマンドを入力します。
@@ -105,6 +109,7 @@ mklink /d "C:\Program Files (x86)\Origin Games\Battlefield 4\Update\Xpack3" "D:\
 mklink /d "C:\Program Files (x86)\Origin Games\Battlefield 4\Update\Xpack4" "D:\Program Files\BF4-Xpack\Xpack4"
 mklink /d "C:\Program Files (x86)\Origin Games\Battlefield 4\Update\Xpack5" "D:\Program Files\BF4-Xpack\Xpack5"
 mklink /d "C:\Program Files (x86)\Origin Games\Battlefield 4\Update\Xpack6" "D:\Program Files\BF4-Xpack\Xpack6"
+mklink /d "C:\Program Files (x86)\Origin Games\Battlefield 4\Update\Xpack7" "D:\Program Files\BF4-Xpack\Xpack7"
 ```
 
 正常に完了していれば以下のような返答がコマンド一回ごとに返ってきます。
@@ -114,7 +119,7 @@ C:\Program Files (x86)\Origin Games\Battlefield 4\Update\Xpack0
 ```
 
 一旦、インストールフォルダに戻りましょう。
-インストールフォルダにあったXpack0～6に矢印のマークがついたフォルダができていますか？
+インストールフォルダにあったXpack0～7に矢印のマークがついたフォルダができていますか？
 
 以上でファイルの移動自体は完了ですが、最後にひとつだけやることがあります。
 それは、オリジンバトルフィールド4を選び右クリック、ゲームの修復を行ってください。
