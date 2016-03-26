@@ -1,7 +1,7 @@
 /**
 * @name RSPM BBLog Plugin
 * @author japankun
-* @version 0.5.8 2015/11/24
+* @version 0.5.9 2016/03/26
 * @url https://github.com/japankun/japankun.github.io
 */
 
@@ -12,10 +12,10 @@ BBLog.handle("add.plugin", {
 	/* Info */
 	id : "jpnkun-rspm",
 	name : "RSPM BBLog Plugin",
-	build : '20151124',
+	build : '20160326',
 
 	configFlags: [
-		["option.show-rspm-value", 1],
+		["option.show-rspm-value", 0],
 		["option.show-rspm-cq"   , 1],
 		["option.show-rspm-tdm"  , 0],
 		["option.show-rspm-rush" , 0],
