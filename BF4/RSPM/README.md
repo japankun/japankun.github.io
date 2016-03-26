@@ -4,6 +4,8 @@ RSPM BBLog Plugin
 ##これは何？
 BF4バトルログ(進行過程ページ)にgoodgamesさんのRSPMとVALUEを表示させるBetter Battlelogプラグインです。
 
+- StatsNow!!復活までデフォルト設定ではRSPM/VALUE表示はオフになりました。
+
 ![RSPM-Plugin-Image](https://scejapankun.files.wordpress.com/2015/03/rspm-and-value.png)
 
 - 初期設定ではコンクエストラージ25ラウンド表示です。
