@@ -1,6 +1,19 @@
 ###PC
 |プレー環境||
 |---|---|
+|CPU|Intel Core i7-6700K@3.40GHz|
+|MEM|CFD W4U2133PS-8G (DDR4 PC4-17000 8GBx2)|
+|VGA|～2016/07 Palit GeForce GTX 960 Super JetStream NE5X960T1041-2060J [PCIExp 2GB]|
+|VGA|2016/07～ EVGA GeForce GTX 1070 SC GAMING ACX 3.0 08G-P4-6173-KR [PCIExp 8GB]|
+|OS|Windows 8.1 Pro Update with Media Center 64bit|
+|モニタ|BENQ XL2411Z@144Hz|
+|マウス|Logicool G300r@2500dpi/1000Hz|
+|ソール|ニチアス カグスベール トスベール (30X12mm 18枚入り)|
+|マウスパッド|ARTISAN 飛燕 Value Edition M JapanBlack|
+|振り向き|0.6cm～0.8cm|
+
+|旧プレー環境||
+|---|---|
 |CPU|Intel Core i7-2600K@3.40GHz|
 |MEM|CFD W3U1333Q-4Gx2 (DDR3 PC3-10600 4GBx4)|
 |VGA|～2015/06 GALAXY GF PGTX760-OC/2GD5 MINI [PCIExp 2GB]|
