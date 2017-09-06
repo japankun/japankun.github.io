@@ -1,7 +1,7 @@
 /**
 * @name RSPM BBLog Plugin
 * @author japankun
-* @version 0.5.9 2016/03/26
+* @version 0.5.10 2017/09/06
 * @url https://github.com/japankun/japankun.github.io
 */
 
@@ -12,7 +12,7 @@ BBLog.handle("add.plugin", {
 	/* Info */
 	id : "jpnkun-rspm",
 	name : "RSPM BBLog Plugin",
-	build : '20160326',
+	build : '20170906',
 
 	configFlags: [
 		["option.show-rspm-value", 0],
@@ -166,9 +166,9 @@ BBLog.handle("add.plugin", {
 				gameMode = "ConquestLarge0";
 			}
 
-			var openShiftAPI = "http://github-japankun.rhcloud.com/rspm/rspm.php"
+			var APIServer = "http://ap.jpnkn.tk/rspm/rspm.php"
 				+ "?gameMode=" + gameMode + "&soldierInfoName=";
-			var queryUrl     = openShiftAPI + soldierInfoName + "&callback=?";
+			var queryUrl     = APIServer + soldierInfoName + "&callback=?";
 
 			$.getJSON(queryUrl,
 
