@@ -13,7 +13,7 @@ Japankun dayo!
 - [RSPM BBLog Plugin](https://github.com/japankun/japankun.github.io/tree/master/BF4/RSPM)
 
 ###for Pro Gamer
-- [Nyorittu Now!](http://nyorittunow-japankun.rhcloud.com/)
+- [Nyorittu Now!](https://ap.jpnkn.tk/nyorittunow/)
 
 ###about.me
 - [Japan kun](http://about.me/SCEJapan/)
