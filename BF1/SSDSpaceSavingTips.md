@@ -256,3 +256,8 @@ C:\Program Files (x86)\Origin Games\Battlefield 1\Patch\Win32\installation\xpack
 
 ## おわり
 ![](https://i.imgur.com/8QLEsr5.png)
+
+この記事が気に入ったらいいね！しよう
+
+![](https://facebook.com/favicon.ico)[シェアする](http://www.facebook.com/sharer/sharer.php?u=https://www.amazon.co.jp/-/dp/B008N8TPK2)
+![](https://twitter.com/favicon.ico)[ツイートする](https://twitter.com/intent/tweet?text=%E6%99%82%E3%81%A8%E6%B0%B8%E9%81%A0~%E3%83%88%E3%82%AD%E3%83%88%E3%83%AF~(%E9%80%9A%E5%B8%B8%E7%89%88)%20-%20PS3&url=https://www.amazon.co.jp/-/dp/B008N8TPK2)
